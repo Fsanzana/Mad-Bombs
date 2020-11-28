@@ -1,5 +1,12 @@
+import java.awt.EventQueue;
+
 public class Main {
     public static void main(String[] args) {
-        new Frame();
+
+        EventQueue.invokeLater(() -> {
+            Frame frame = new Frame();
+            frame.setVisible(true);
+        });
+
     }
 }

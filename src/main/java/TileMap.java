@@ -1,10 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.util.Random;
 import javax.swing.*;
 
 
-public class TileMap extends JPanel implements ActionListener {
+public class TileMap extends JPanel implements ActionListener, KeyListener {
     private final int windowWidth = 480;
     private final int windowHeight = 480;
     private final int imgW = 32;
@@ -16,12 +18,14 @@ public class TileMap extends JPanel implements ActionListener {
     private Image[][] dispTexture;
     private Random rnum = new Random();
     private Player player;
-    Timer timer;
-
+    private Timer timer;
 
     TileMap() {
+
+
         this.setPreferredSize(new Dimension(windowWidth, windowHeight));
         this.setBackground(Color.black);
+        player = new Player();
         dispTexture = new Image[tiles][tiles];
         for (int y = 0; y < tiles; y++) {
             for (int x = 0; x < tiles; x++) {
@@ -33,18 +37,16 @@ public class TileMap extends JPanel implements ActionListener {
                 dispTexture[x][y] = texture;
             }
         }
-        StartGame();
 
-
-    }
-
-    public void StartGame() {
-        player = new Player();
-        timer = new Timer(10, null);
+        addKeyListener(this);
+        timer = new Timer(10, this);
         timer.start();
 
-    }
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
 
+
+    }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -55,16 +57,34 @@ public class TileMap extends JPanel implements ActionListener {
                 g2D.drawImage(dispTexture[x][y], imgX + imgW * x, imgY + imgH * y, imgW, imgH, null);
             }
         }
-        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW, imgH, null);
-
+        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW, imgH, this);
+        Toolkit.getDefaultToolkit().sync();
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        step();
+    }
+
+    private void step() {
         repaint();
         player.move();
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        player.keyPressed(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        player.keyReleased(e);
+    }
 
 }
