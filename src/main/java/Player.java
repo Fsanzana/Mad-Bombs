@@ -18,8 +18,8 @@ public class Player{
         this.positionY = 32;
     }
     public void move(){
-        positionX += dx;
-        positionY += dy;
+        this.positionX += dx;
+        this.positionY += dy;
     }
     public Image getWalk1() {
         return walk1.getImage();
@@ -50,33 +50,33 @@ public class Player{
 
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
-        if(key == KeyEvent.VK_UP){
-            dy=16;
+        if(key == KeyEvent.VK_W){
+            this.dy=-1;
         }
-        if(key == KeyEvent.VK_DOWN){
-            dy=-16;
+        if(key == KeyEvent.VK_S){
+            this.dy=1;
         }
-        if(key == KeyEvent.VK_LEFT){
-            dx=-16;
+        if(key == KeyEvent.VK_A){
+            this.dx=-1;
         }
-        if(key == KeyEvent.VK_RIGHT){
-            dy=16;
+        if(key == KeyEvent.VK_D){
+            this.dx=1;
         }
 
     }
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
-        if(key == KeyEvent.VK_UP){
-            dy=0;
+        if(key == KeyEvent.VK_W){
+            this.dy=0;
         }
-        if(key == KeyEvent.VK_DOWN){
-            dy=0;
+        if(key == KeyEvent.VK_S){
+            this.dy=0;
         }
-        if(key == KeyEvent.VK_LEFT){
-            dx=0;
+        if(key == KeyEvent.VK_A){
+            this.dx=0;
         }
-        if(key == KeyEvent.VK_RIGHT){
-            dy=0;
+        if(key == KeyEvent.VK_D){
+            this.dx=0;
         }
 
     }
