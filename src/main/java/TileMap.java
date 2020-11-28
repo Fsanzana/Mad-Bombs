@@ -25,7 +25,7 @@ public class TileMap extends JPanel implements ActionListener {
 
     TileMap() {
 
-        addKeyListener(new TAdapter());
+
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
         player = new Player();
@@ -40,7 +40,9 @@ public class TileMap extends JPanel implements ActionListener {
                 dispTexture[x][y] = texture;
             }
         }
-        timer = new Timer(10,null);
+
+        addKeyListener(new TAdapter());
+        timer = new Timer(10,this);
         timer.start();
 
 
@@ -55,7 +57,7 @@ public class TileMap extends JPanel implements ActionListener {
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
         }
-        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW,imgH, null);
+        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW,imgH, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
