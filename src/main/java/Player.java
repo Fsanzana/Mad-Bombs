@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 
 public class Player{
     private final ImageIcon walk1;
@@ -11,12 +11,24 @@ public class Player{
     public int dx = 0;
     public int dy = 0;
     Player(){
+
         walk1 = new ImageIcon("src/main/resources/player/step_1.png");
         walk2 = new ImageIcon("src/main/resources/player/step_2.png");
         stand = new ImageIcon("src/main/resources/player/stand.png");
         this.positionX = 32;
         this.positionY = 32;
+        this.dx = 0;
+        this.dy =0;
     }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
+
     public void move(){
         positionX += dx;
         positionY += dy;
@@ -47,37 +59,9 @@ public class Player{
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
-    public void KeyPressed(KeyEvent e){
-        int key = e.getKeyCode();
-        if(key == KeyEvent.VK_UP){
-            dy=16;
-        }
-        if(key == KeyEvent.VK_DOWN){
-            dy=-16;
-        }
-        if(key == KeyEvent.VK_LEFT){
-            dx=-16;
-        }
-        if(key == KeyEvent.VK_RIGHT){
-            dy=16;
-        }
 
-    }
-    public void keyReleased(KeyEvent e){
-        int key = e.getKeyCode();
-        if(key == KeyEvent.VK_UP){
-            dy=0;
-        }
-        if(key == KeyEvent.VK_DOWN){
-            dy=0;
-        }
-        if(key == KeyEvent.VK_LEFT){
-            dx=0;
-        }
-        if(key == KeyEvent.VK_RIGHT){
-            dy=0;
-        }
 
-    }
+
+
 
 }

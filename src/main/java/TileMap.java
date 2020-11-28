@@ -1,6 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
 
@@ -17,13 +16,13 @@ public class TileMap extends JPanel implements ActionListener {
     private Image[][] dispTexture;
     private Random rnum = new Random();
     private Player player;
+    Timer timer;
 
 
     TileMap() {
-        Timer timer = new Timer(10,null);
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
-        player = new Player();
+        this.addKeyListener(new MyKeyAdapter());
         dispTexture = new Image[tiles][tiles];
         for(int y=0;y<tiles;y++){
             for(int x=0;x<tiles;x++){
@@ -35,9 +34,19 @@ public class TileMap extends JPanel implements ActionListener {
                 dispTexture[x][y] = texture;
             }
         }
+        StartGame();
 
 
     }
+
+    public void StartGame(){
+        player = new Player();
+        timer = new Timer(10,null);
+        timer.start();
+
+    }
+
+
 
     @Override
     public void paintComponent(Graphics g) {
@@ -55,6 +64,30 @@ public class TileMap extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        repaint();
     }
-}
+
+    public class MyKeyAdapter extends KeyAdapter{
+        @Override
+        public void keyPressed(KeyEvent e) {
+            switch (e.getKeyCode()){
+                case KeyEvent.VK_UP:
+                    player.setDy(16);
+
+                    break;
+                case KeyEvent.VK_DOWN:
+                    player.setDy(-16);
+
+                    break;
+                case KeyEvent.VK_LEFT:
+                    player.dx=-16;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    player.dx=16;
+                    break;
+            }
+        }
+    }
+
+
+    }
