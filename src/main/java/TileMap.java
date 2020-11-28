@@ -1,5 +1,10 @@
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 import java.util.Random;
 import javax.swing.*;
 
@@ -16,7 +21,7 @@ public class TileMap extends JPanel implements ActionListener {
     private Image[][] dispTexture;
     private Random rnum = new Random();
     private Player player;
-
+    private Timer timer;
 
     TileMap() {
 
@@ -35,7 +40,7 @@ public class TileMap extends JPanel implements ActionListener {
                 dispTexture[x][y] = texture;
             }
         }
-        Timer timer = new Timer(10,null);
+        timer = new Timer(10,null);
         timer.start();
 
 
@@ -61,7 +66,7 @@ public class TileMap extends JPanel implements ActionListener {
     }
     public void step(){
         player.move();
-        repaint(player.getPositionX(),player.getPositionY(),imgW,imgH);
+        repaint(player.getPositionX()-1,player.getPositionY()-1,imgW+2,imgH+2);
     }
 
     private class TAdapter extends KeyAdapter {
