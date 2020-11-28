@@ -7,7 +7,7 @@ import javax.swing.*;
 
 
 public class TileMap extends JPanel implements ActionListener, KeyListener {
-    private final int windowWidth = 480;
+    private final int windowWidth = 960;
     private final int windowHeight = 480;
     private final int imgW = 32;
     private final int imgH = 32;
