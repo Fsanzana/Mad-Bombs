@@ -1,10 +1,10 @@
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    TileMap board;
+    TileMap map;
     public Frame() {
-        board = new TileMap();
-        this.add(board);
+        map = new TileMap();
+        this.add(map);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Mad-Bombs");
         this.pack();
