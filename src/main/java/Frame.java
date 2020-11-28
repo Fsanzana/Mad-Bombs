@@ -2,6 +2,7 @@ import javax.swing.*;
 
 public class Frame extends JFrame {
     TileMap map;
+
     public Frame() {
         map = new TileMap();
         this.add(map);
