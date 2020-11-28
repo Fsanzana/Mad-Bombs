@@ -16,13 +16,14 @@ public class TileMap extends JPanel implements ActionListener {
     private Image texture;
     private Image[][] dispTexture;
     private Random rnum = new Random();
+    private Player player;
 
 
     TileMap() {
-
+        Timer timer = new Timer(10,null);
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
-
+        player = new Player();
         dispTexture = new Image[tiles][tiles];
         for(int y=0;y<tiles;y++){
             for(int x=0;x<tiles;x++){
@@ -47,18 +48,8 @@ public class TileMap extends JPanel implements ActionListener {
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
         }
+        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW,imgH, null);
 
-
-
-    }
-    public void colissionDetection(Graphics g){
-        Graphics2D g2D = (Graphics2D) g;
-        Rectangle wall1 = new Rectangle(windowWidth,imgH);
-        for(int y=0;y<tiles;y++){
-            for(int x=0;x<tiles;x++){
-
-            }
-        }
     }
 
 

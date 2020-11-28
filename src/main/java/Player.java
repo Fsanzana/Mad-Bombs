@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player{
@@ -10,9 +11,9 @@ public class Player{
     public int dx = 0;
     public int dy = 0;
     Player(){
-        walk1 = new ImageIcon("src/main/resources/player/frames/step_1.png");
-        walk2 = new ImageIcon("src/main/resources/player/frames/step_2.png");
-        stand = new ImageIcon("src/main/resources/player/frames/stand.png");
+        walk1 = new ImageIcon("src/main/resources/player/step_1.png");
+        walk2 = new ImageIcon("src/main/resources/player/step_2.png");
+        stand = new ImageIcon("src/main/resources/player/stand.png");
         this.positionX = 32;
         this.positionY = 32;
     }
@@ -20,16 +21,16 @@ public class Player{
         positionX += dx;
         positionY += dy;
     }
-    public ImageIcon getWalk1() {
-        return walk1;
+    public Image getWalk1() {
+        return walk1.getImage();
     }
 
-    public ImageIcon getWalk2() {
-        return walk2;
+    public Image getWalk2() {
+        return walk2.getImage();
     }
 
-    public ImageIcon getStand() {
-        return stand;
+    public Image getStand() {
+        return stand.getImage();
     }
     public int getPositionX() {
         return positionX;
