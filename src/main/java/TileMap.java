@@ -22,7 +22,7 @@ public class TileMap extends JPanel {
         uwu = new Image[15][15];
         for(int y=0;y<15;y++){
             for(int x=0;x<15;x++){
-                if(x==0 || y==0 || x==14 || y==14){
+                if(x==0 || y==0 || x==14 || y==14 || x%2==0 && y%2==0 ){
                     imagen = new ImageIcon("src/main/resources/tiles/frames/wall_left.png").getImage();
                 }else {
                     imagen = new ImageIcon("src/main/resources/tiles/frames/floor_" + (rnum.nextInt(3) + 1) + ".png").getImage();
