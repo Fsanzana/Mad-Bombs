@@ -1,6 +1,5 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
 
@@ -20,7 +19,8 @@ public class TileMap extends JPanel implements ActionListener {
 
 
     TileMap() {
-        Timer timer = new Timer(10,null);
+
+        addKeyListener(new TAdapter());
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
         player = new Player();
@@ -35,6 +35,8 @@ public class TileMap extends JPanel implements ActionListener {
                 dispTexture[x][y] = texture;
             }
         }
+        Timer timer = new Timer(10,null);
+        timer.start();
 
 
     }
@@ -49,12 +51,29 @@ public class TileMap extends JPanel implements ActionListener {
             }
         }
         g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW,imgH, null);
-
+        Toolkit.getDefaultToolkit().sync();
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        step();
+    }
+    public void step(){
+        player.move();
+        repaint(player.getPositionX(),player.getPositionY(),imgW,imgH);
+    }
+
+    private class TAdapter extends KeyAdapter {
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            player.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            player.keyPressed(e);
+        }
     }
 }
