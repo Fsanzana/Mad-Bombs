@@ -65,18 +65,19 @@ public class TileMap extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+        player.move();
     }
 
     public class MyKeyAdapter extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()){
-                case KeyEvent.VK_UP:
-                    player.setDy(16);
+                case KeyEvent.VK_W:
+                    player.setDy(1);
 
                     break;
-                case KeyEvent.VK_DOWN:
-                    player.setDy(-16);
+                case KeyEvent.VK_S:
+                    player.setDy(-1);
 
                     break;
                 case KeyEvent.VK_LEFT:
