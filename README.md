@@ -6,6 +6,7 @@ Integrantes:
     Felipe Sanzana
     Vicente Silva
 
+HOLAAAAAAAAAAAAAAAAAAAAAAAAA
 Titulo del proyecto: Mad Bombs (Bombas locas)
 
 Descripción: Mad Bombs Es un videojuego cuyo fin es brindar horas de entretencion a las personas, ya sea para una sola persona en su modo un jugador, o hasta para un máximo de 4 personas en su modo multijugador competitivo.
