@@ -51,16 +51,16 @@ public class Player{
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W){
-            this.dy=16;
+            this.dy=-1;
         }
         if(key == KeyEvent.VK_S){
-            this.dy=-16;
+            this.dy=1;
         }
         if(key == KeyEvent.VK_A){
-            this.dx=-16;
+            this.dx=-1;
         }
         if(key == KeyEvent.VK_D){
-            this.dy=16;
+            this.dx=1;
         }
 
     }
@@ -76,7 +76,7 @@ public class Player{
             this.dx=0;
         }
         if(key == KeyEvent.VK_D){
-            this.dy=0;
+            this.dx=0;
         }
 
     }

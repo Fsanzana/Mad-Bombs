@@ -1,15 +1,12 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.util.Random;
 import javax.swing.*;
 
 
-public class TileMap extends JPanel implements ActionListener {
+public class TileMap extends JPanel implements ActionListener, KeyListener {
     private final int windowWidth = 480;
     private final int windowHeight = 480;
     private final int imgW = 32;
@@ -41,9 +38,12 @@ public class TileMap extends JPanel implements ActionListener {
             }
         }
 
-        addKeyListener(new TAdapter());
+        addKeyListener(this);
         timer = new Timer(10,this);
         timer.start();
+
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
 
 
     }
@@ -66,21 +66,24 @@ public class TileMap extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         step();
     }
-    public void step(){
+    private void step(){
+        repaint();
         player.move();
-        repaint(player.getPositionX()-1,player.getPositionY()-1,imgW+2,imgH+2);
     }
 
-    private class TAdapter extends KeyAdapter {
+    @Override
+    public void keyTyped(KeyEvent e) {
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-            player.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            player.keyPressed(e);
-        }
     }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        player.keyPressed(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        player.keyReleased(e);
+    }
+
 }
