@@ -1,14 +1,16 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import javax.swing.*;
 
 
-public class TileMap extends JPanel {
-    private final int tiles = 15;
+public class TileMap extends JPanel implements ActionListener {
     private final int windowWidth = 480;
     private final int windowHeight = 480;
     private final int imgW = 32;
     private final int imgH = 32;
+    private int tiles = 15;
     private int imgX = 0;
     private int imgY = 0;
     private Image texture;
@@ -21,10 +23,10 @@ public class TileMap extends JPanel {
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
 
-        dispTexture = new Image[15][15];
-        for(int y=0;y<15;y++){
-            for(int x=0;x<15;x++){
-                if(x==0 || y==0 || x==14 || y==14 || x%2==0 && y%2==0 ){
+        dispTexture = new Image[tiles][tiles];
+        for(int y=0;y<tiles;y++){
+            for(int x=0;x<tiles;x++){
+                if(x==0 || y==0 || x==tiles-1 || y==tiles-1 || x%2==0 && y%2==0 ){
                     texture = new ImageIcon("src/main/resources/tiles/frames/wall_left.png").getImage();
                 }else {
                     texture = new ImageIcon("src/main/resources/tiles/frames/floor_" + (rnum.nextInt(3) + 1) + ".png").getImage();
@@ -40,8 +42,8 @@ public class TileMap extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
-        for(int y=0;y<15;y++){
-            for(int x=0;x<15;x++){
+        for(int y=0;y<tiles;y++){
+            for(int x=0;x<tiles;x++){
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
         }
@@ -49,6 +51,19 @@ public class TileMap extends JPanel {
 
 
     }
+    public void colissionDetection(Graphics g){
+        Graphics2D g2D = (Graphics2D) g;
+        Rectangle wall1 = new Rectangle(windowWidth,imgH);
+        for(int y=0;y<tiles;y++){
+            for(int x=0;x<tiles;x++){
+
+            }
+        }
+    }
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
 }
