@@ -48,6 +48,15 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
 
     }
 
+    public void Collision(){
+        if(player.positionX==windowWidth || player.positionX==windowWidth){
+            player.setPositionX(windowWidth-1);
+        }
+        if(player.positionY==windowHeight || player.positionY==windowHeight){
+            player.setPositionY(windowHeight-1);
+        }
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -65,6 +74,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         step();
+        Collision();
     }
 
     private void step() {
