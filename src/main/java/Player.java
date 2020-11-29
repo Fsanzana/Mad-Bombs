@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player{
-    private final int width = 32;
-    private final int height = 32;
+    private final int width = 26;
+    private final int height = 26;
     private final ImageIcon walk1;
     private final ImageIcon walk2;
     private final ImageIcon stand;
@@ -41,6 +41,22 @@ public class Player{
         return positionX;
     }
 
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
+
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
@@ -52,6 +68,15 @@ public class Player{
     public void setPositionY(int positionY) {
         this.positionY = positionY;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
 
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
@@ -69,6 +94,8 @@ public class Player{
         }
 
     }
+
+
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W){

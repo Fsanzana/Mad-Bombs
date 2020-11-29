@@ -62,7 +62,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
         }
-        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), imgW,imgH, this);
+        g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), player.getWidth(),player.getHeight(), this);
         g2D.drawString("Collision = "+String.valueOf(collision),500,100);
         g2D.drawString(String.valueOf("x="+player.positionX+", y="+player.positionY),500,200);
         Toolkit.getDefaultToolkit().sync();
@@ -81,6 +81,23 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
                 Rectangle r2 = walls[i].bounds();
                 if (r1.intersects(r2)) {
                     collision = true;
+                    if(r1.intersection(r2).getX()==r1.getX()&&player.dx<0){
+                        player.setPositionX(player.getPositionX()+1);
+                        player.setDx(0);
+                    }if((r1.intersection(r2).getX()-r1.getX()==(player.getWidth()-1))&&player.dx>0){
+                        player.setPositionX(player.getPositionX()-1);
+                        player.setDx(0);
+                    } if(r1.intersection(r2).getY()==r1.getY()&&player.dy<0){
+                        player.setPositionY(player.getPositionY()+1);
+                        player.setDy(0);
+                    }if((r1.intersection(r2).getY()-r1.getY()==player.getHeight()-1)&&player.dy>0){
+                        player.setPositionY(player.getPositionY()-1);
+                        player.setDy(0);
+                    }
+                    System.out.println("wall: "+r1.getY());
+                    System.out.println("player: "+player.getPositionY());
+                    System.out.println("delta: "+(r1.intersection(r2).getY()-r1.getY()));
+
                     break;
                 } else {
                     collision = false;
