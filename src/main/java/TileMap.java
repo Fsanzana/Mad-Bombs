@@ -7,11 +7,12 @@ import javax.swing.*;
 
 
 public class TileMap extends JPanel implements ActionListener, KeyListener {
-    private final int windowWidth = 600;
+    private final int windowWidth = 960;
     private final int windowHeight = 480;
     private final int imgW = 32;
     private final int imgH = 32;
-    private int tiles = 15;
+    private int tilesw = 15;
+    private int tilesh = 23;
     private int imgX = 0;
     private int imgY = 0;
     private Image texture;
@@ -26,11 +27,11 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
         player = new Player();
-        dispTexture = new Image[tiles][tiles];
+        dispTexture = new Image[tilesh][tilesw];
         int i=0;
-        for(int y=0;y<tiles;y++){
-            for(int x=0;x<tiles;x++){
-                if(x==0 || y==0 || x==tiles-1 || y==tiles-1 || x%2==0 && y%2==0 ){
+        for(int x=0;x<tilesh;x++){
+            for(int y=0;y<tilesw;y++){
+                if(x==0 || y==0 || x==tilesh-1 || y==tilesw-1 || x%2==0 && y%2==0 ){
                     texture = new ImageIcon("src/main/resources/tiles/frames/wall_left.png").getImage();
                     walls[i] = new Wall(imgW*x,imgH*y);
                 }else {
@@ -57,14 +58,14 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.red);
-        for(int y=0;y<tiles;y++){
-            for(int x=0;x<tiles;x++){
+        for(int y=0;y<tilesw;y++){
+            for(int x=0;x<tilesh;x++){
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
         }
         g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), player.getWidth(),player.getHeight(), this);
         g2D.drawString("Collision = "+String.valueOf(collision),500,100);
-        g2D.drawString(String.valueOf("x="+player.positionX+", y="+player.positionY),500,200);
+        g2D.drawString(String.valueOf("x="+player.positionX+", y="+player.positionY),800,100);
         Toolkit.getDefaultToolkit().sync();
     }
 
