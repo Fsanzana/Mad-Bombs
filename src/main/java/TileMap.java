@@ -26,7 +26,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
         walls = new Wall[tilesh*tilesw];
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
-        player = new Player();
+        player = new Player(0,0,0);
+        Player player1 = new Player(32,32, 1);
+        Player player2 = new Player(676,418,2);
+        Player player3 = new Player(676,35,3);
+        Player player4 = new Player(35,418,4);
+        player = player2;
         dispTexture = new Image[tilesh][tilesw];
         int i=0;
         for(int x=0;x<tilesh;x++){
@@ -74,7 +79,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         collision();
         step();
+        movyo();
     }
+
+    private void movyo() {
+    }
+
     public void collision(){
         Rectangle r1 = new Rectangle(player.bounds());
         for(int i = 0; i<walls.length;i++){
