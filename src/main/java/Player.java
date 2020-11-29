@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Player{
+    private final int width = 32;
+    private final int height = 32;
     private final ImageIcon walk1;
     private final ImageIcon walk2;
     private final ImageIcon stand;
@@ -16,6 +18,9 @@ public class Player{
         stand = new ImageIcon("src/main/resources/player/stand.png");
         this.positionX = 32;
         this.positionY = 32;
+    }
+    public Rectangle bounds(){
+        return (new Rectangle(positionX,positionY,width,height));
     }
     public void move(){
         this.positionX += dx;
