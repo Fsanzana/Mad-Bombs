@@ -22,11 +22,20 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
     private Wall[] walls;
     private boolean collision;
+    private Player netp1;
+    private Player netp2;
+    private Player netp3;
+    private Player netp4;
     TileMap() {
-        walls = new Wall[tilesw*tilesh];
+        walls = new Wall[tilesh*tilesw];
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
-        player = new Player();
+        player = new Player(0,0,0);
+        Player player1 = new Player(32,32, 1);
+        Player player2 = new Player(676,418,2);
+        Player player3 = new Player(676,35,3);
+        Player player4 = new Player(35,418,4);
+        player = player3;
         dispTexture = new Image[tilesh][tilesw];
         int i=0;
         for(int x=0;x<tilesh;x++){
@@ -64,7 +73,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
             }
         }
         g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), player.getWidth(),player.getHeight(), this);
-        g2D.drawString("Collision = "+String.valueOf(collision),800,200);
+        g2D.drawString("Collision = "+String.valueOf(collision),800,120);
         g2D.drawString(String.valueOf("x="+player.positionX+", y="+player.positionY),800,100);
         Toolkit.getDefaultToolkit().sync();
     }
@@ -74,7 +83,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     public void actionPerformed(ActionEvent e) {
         collision();
         step();
+        movyo();
     }
+
+    private void movyo() {
+    }
+
     public void collision(){
         Rectangle r1 = new Rectangle(player.bounds());
         for(int i = 0; i<walls.length;i++){
