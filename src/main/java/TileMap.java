@@ -76,21 +76,17 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     }
     public void collision(){
         Rectangle r1 = new Rectangle(player.bounds());
-        if(r1.intersects(walls[0].bounds())){
-            collision = true;
-        }else{
-            collision = false;
-        }
-        /*for(int i = 0; i<walls.length;i++){
+        for(int i = 0; i<walls.length;i++){
             if(walls[i]!=null){
                 Rectangle r2 = walls[i].bounds();
                 if (r1.intersects(r2)) {
                     collision = true;
+                    break;
                 } else {
                     collision = false;
                 }
             }
-        }*/
+        }
     }
     private void step(){
         repaint();
