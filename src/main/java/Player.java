@@ -10,6 +10,7 @@ public class Player{
     private final ImageIcon stand;
     public int positionX;
     public int positionY;
+    public  int pjscreen;
     public int dx = 0;
     public int dy = 0;
     Player(int px, int py, int npj){
@@ -18,6 +19,7 @@ public class Player{
         stand = new ImageIcon("src/main/resources/player/stand.png");
         this.positionX = px;
         this.positionY = py;
+        this.pjscreen=npj;
     }
     public Rectangle bounds(){
         return (new Rectangle(positionX,positionY,width,height));
@@ -82,19 +84,19 @@ public class Player{
         int key = e.getKeyCode();
         if(key == KeyEvent.VK_W){
             this.dy=-1;
-            System.out.println("arribapres p1");
+            System.out.println("arribapres p" + pjscreen);
         }
         if(key == KeyEvent.VK_S){
             this.dy=1;
-            System.out.println("abajopres p1");
+            System.out.println("abajopres p" + pjscreen);
         }
         if(key == KeyEvent.VK_A){
             this.dx=-1;
-            System.out.println("izpress p1");
+            System.out.println("izpress p" + pjscreen);
         }
         if(key == KeyEvent.VK_D){
             this.dx=1;
-            System.out.println("derpress p1");
+            System.out.println("derpress p" + pjscreen);
         }
 
     }

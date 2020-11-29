@@ -22,6 +22,10 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     private Timer timer;
     private Wall[] walls;
     private boolean collision;
+    private Player netp1;
+    private Player netp2;
+    private Player netp3;
+    private Player netp4;
     TileMap() {
         walls = new Wall[tilesh*tilesw];
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
@@ -31,7 +35,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
         Player player2 = new Player(676,418,2);
         Player player3 = new Player(676,35,3);
         Player player4 = new Player(35,418,4);
-        player = player2;
+        player = player3;
         dispTexture = new Image[tilesh][tilesw];
         int i=0;
         for(int x=0;x<tilesh;x++){
