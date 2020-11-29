@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class Usuario {
+public class Usuario extends TileMap{
+    Usuario(){
+        System.out.println("hola");
+    }
 }

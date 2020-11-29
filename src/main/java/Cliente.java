@@ -2,7 +2,8 @@ import java.io.*;
 import java.net.Socket;
 import java.util.*;
 import java.util.logging.*;
-class Persona extends Thread {
+
+ class Persona extends Thread {
     protected Socket sk;
     protected DataOutputStream dos;
     protected DataInputStream dis;
@@ -32,12 +33,15 @@ class Persona extends Thread {
 public class Cliente {
     public static void main(String[] args) {
         ArrayList<Thread> clients = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             clients.add(new Persona(i));
         }
         for (Thread thread : clients) {
             thread.start();
         }
     }
+
+
 }
+
 //</thread></thread>
