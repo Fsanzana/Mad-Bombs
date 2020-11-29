@@ -23,7 +23,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     private Wall[] walls;
     private boolean collision;
     TileMap() {
-        walls = new Wall[tiles*tiles];
+        walls = new Wall[tilesw*tilesh];
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
         player = new Player();
@@ -64,7 +64,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
             }
         }
         g2D.drawImage(player.getStand(), player.getPositionX(), player.getPositionY(), player.getWidth(),player.getHeight(), this);
-        g2D.drawString("Collision = "+String.valueOf(collision),500,100);
+        g2D.drawString("Collision = "+String.valueOf(collision),800,200);
         g2D.drawString(String.valueOf("x="+player.positionX+", y="+player.positionY),800,100);
         Toolkit.getDefaultToolkit().sync();
     }
