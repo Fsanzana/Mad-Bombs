@@ -164,75 +164,75 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
 
         if(key == KeyEvent.VK_W){
             player1.setDy(-1);
-            System.out.println("arribapres p");
+            System.out.println("arribapres p1");
         }
         if(key == KeyEvent.VK_S){
             player1.setDy(1);
-            System.out.println("abajopres p");
+            System.out.println("abajopres p1");
         }
         if(key == KeyEvent.VK_A){
             player1.setDx(-1);
-            System.out.println("izpress p");
+            System.out.println("izpress p1");
         }
         if(key == KeyEvent.VK_D){
             player1.setDx(1);
-            System.out.println("derpress p");
+            System.out.println("derpress p1");
         }
 
         //Player 2
         if(key == KeyEvent.VK_I){
             player2.setDy(-1);
-            System.out.println("arribapres p");
+            System.out.println("arribapres p2");
         }
         if(key == KeyEvent.VK_K){
             player2.setDy(1);
-            System.out.println("abajopres p");
+            System.out.println("abajopres p2");
         }
         if(key == KeyEvent.VK_J){
             player2.setDx(-1);
-            System.out.println("izpress p");
+            System.out.println("izpress p2");
         }
         if(key == KeyEvent.VK_L){
             player2.setDx(1);
-            System.out.println("derpress p");
+            System.out.println("derpress p2");
         }
 
         //Player 3
 
         if(key == KeyEvent.VK_UP){
             player3.setDy(-1);
-            System.out.println("arribapres p");
+            System.out.println("arribapres p3");
         }
         if(key == KeyEvent.VK_DOWN){
             player3.setDy(1);
-            System.out.println("abajopres p");
+            System.out.println("abajopres p3");
         }
         if(key == KeyEvent.VK_LEFT){
             player3.setDx(-1);
-            System.out.println("izpress p");
+            System.out.println("izpress p3");
         }
         if(key == KeyEvent.VK_RIGHT){
             player3.setDx(1);
-            System.out.println("derpress p");
+            System.out.println("derpress p3");
         }
 
-        //Player 3
+        //Player 4
 
         if(key == KeyEvent.VK_NUMPAD8){
             player4.setDy(-1);
-            System.out.println("arribapres p");
+            System.out.println("arribapres p4");
         }
         if(key == KeyEvent.VK_NUMPAD5){
             player4.setDy(1);
-            System.out.println("abajopres p");
+            System.out.println("abajopres p4");
         }
         if(key == KeyEvent.VK_NUMPAD4){
             player4.setDx(-1);
-            System.out.println("izpress p");
+            System.out.println("izpress p4");
         }
         if(key == KeyEvent.VK_NUMPAD6){
             player4.setDx(1);
-            System.out.println("derpress p");
+            System.out.println("derpress p4");
         }
     }
 
@@ -295,7 +295,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
 
         }
 
-        //Player 3
+        //Player 4
 
         if(key == KeyEvent.VK_NUMPAD8){
             player4.setDy(0);
