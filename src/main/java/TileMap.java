@@ -92,17 +92,29 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     public void collision(){
         Rectangle r1 = new Rectangle(player.bounds());
         for(int i = 0; i<walls.length;i++){
+            if(player.getPositionX()>678){
+                player.setPositionX(678);
+            }
+            if(player.getPositionX()<32){
+                player.setPositionX(32);
+            }
+            if(player.getPositionY()>422){
+                player.setPositionY(422);
+            }
+            if(player.getPositionY()<32){
+                player.setPositionY(32);
+            }
             if(walls[i]!=null){
                 Rectangle r2 = walls[i].bounds();
                 if (r1.intersects(r2)) {
-                    collision = true;
-                    if(r1.intersection(r2).getX()==r1.getX()&&player.dx<0){
-                        player.setPositionX(player.getPositionX()+1);
-                        player.setDx(0);
-                    }if((r1.intersection(r2).getX()-r1.getX()==(player.getWidth()-1))&&player.dx>0){
-                        player.setPositionX(player.getPositionX()-1);
-                        player.setDx(0);
-                    } if(r1.intersection(r2).getY()==r1.getY()&&player.dy<0){
+                        collision = true;
+                        if(r1.intersection(r2).getX()==r1.getX()&&player.dx<0){
+                            player.setPositionX(player.getPositionX()+1);
+                            player.setDx(0);
+                        }if((r1.intersection(r2).getX()-r1.getX()==(player.getWidth()-1))&&player.dx>0){
+                            player.setPositionX(player.getPositionX()-1);
+                            player.setDx(0);
+                        } if(r1.intersection(r2).getY()==r1.getY()&&player.dy<0){
                         player.setPositionY(player.getPositionY()+1);
                         player.setDy(0);
                     }if((r1.intersection(r2).getY()-r1.getY()==player.getHeight()-1)&&player.dy>0){
