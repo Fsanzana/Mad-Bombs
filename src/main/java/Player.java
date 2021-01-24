@@ -80,47 +80,4 @@ public class Player{
     }
 
 
-    public void keyPressed(KeyEvent e){
-        int key = e.getKeyCode();
-        if(key == KeyEvent.VK_W){
-            this.dy=-1;
-            System.out.println("arribapres p" + pjscreen);
-        }
-        if(key == KeyEvent.VK_S){
-            this.dy=1;
-            System.out.println("abajopres p" + pjscreen);
-        }
-        if(key == KeyEvent.VK_A){
-            this.dx=-1;
-            System.out.println("izpress p" + pjscreen);
-        }
-        if(key == KeyEvent.VK_D){
-            this.dx=1;
-            System.out.println("derpress p" + pjscreen);
-        }
-
-    }
-
-
-    public void keyReleased(KeyEvent e){
-        int key = e.getKeyCode();
-        if(key == KeyEvent.VK_W){
-            this.dy=0;
-
-        }
-        if(key == KeyEvent.VK_S){
-            this.dy=0;
-
-        }
-        if(key == KeyEvent.VK_A){
-            this.dx=0;
-
-        }
-        if(key == KeyEvent.VK_D){
-            this.dx=0;
-
-        }
-
-    }
-
 }
