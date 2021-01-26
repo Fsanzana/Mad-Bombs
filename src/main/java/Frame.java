@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+//crea ventana en donde se ejecutara el juego
 public class Frame extends JFrame {
     TileMap map;
     public Frame() {

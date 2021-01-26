@@ -7,11 +7,11 @@ import javax.swing.*;
 
 
 public class TileMap extends JPanel implements ActionListener, KeyListener {
-    private final int windowWidth = 960;
+    private final int windowWidth = 736;//tamaño de la ventana
     private final int windowHeight = 480;
     private final int imgW = 32;
     private final int imgH = 32;
-    private int tilesw = 15;
+    private int tilesw = 15;//alto y ancho del mapa en bloques (32pxx32px)
     private int tilesh = 23;
     private int imgX = 0;
     private int imgY = 0;
@@ -26,11 +26,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     private Player netp3;
     private Player netp4;
 
+    //Iniciacion de jugadores
     private Player player1 = new Player(32,32, 1);
     private Player player2 = new Player(676,418,2);
     private Player player3 = new Player(676,35,3);
     private Player player4 = new Player(35,418,4);
-    TileMap() {
+    TileMap() { //Metodo principal, construye la estructura del mapa y llama a los metodos de dibujo y de acciones
         walls = new Wall[tilesh*tilesw];
         this.setPreferredSize(new Dimension(windowWidth,windowHeight));
         this.setBackground(Color.black);
@@ -40,7 +41,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
             for(int y=0;y<tilesw;y++){
                 if(x==0 || y==0 || x==tilesh-1 || y==tilesw-1 || x%2==0 && y%2==0 ){
                     texture = new ImageIcon("src/main/resources/tiles/frames/wall_left.png").getImage();
-                    walls[i] = new Wall(imgW*x,imgH*y);
+                    walls[i] = new Wall(imgW*x,imgH*y); //almacena datos de piso y murallas en un arreglo de tipo muralla
                 }else {
                     texture = new ImageIcon("src/main/resources/tiles/frames/floor_" + (rnum.nextInt(3) + 1) + ".png").getImage();
                 }
@@ -60,12 +61,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {// metodo de dibujo
 
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
         g2D.setColor(Color.red);
-        for(int y=0;y<tilesw;y++){
+        for(int y=0;y<tilesw;y++){ //dibuja el mapa completo utilizando el arreglo creado previamente
             for(int x=0;x<tilesh;x++){
                 g2D.drawImage(dispTexture[x][y], imgX+imgW*x, imgY+imgH*y,imgW,imgH, null);
             }
@@ -91,7 +92,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
 
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) { //Metodo utilizado para llamar a las colisiones entre los jugadores y el mapa
         collision(player1);
         collision(player2);
         collision(player3);
@@ -102,8 +103,8 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
 
 
 
-    public void collision(Player player){
-        Rectangle r1 = new Rectangle(player.bounds());
+    public void collision(Player player){ //se encarga del correcto funcionamiento de las colisiones entre jugador y mapa
+        Rectangle r1 = new Rectangle(player.bounds()); //utiliza rectangulos para los bordes de cada objeto
         for(int i = 0; i<walls.length;i++){
             if(player.getPositionX()>678){
                 player.setPositionX(678);
@@ -119,7 +120,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
             }
             if(walls[i]!=null){
                 Rectangle r2 = walls[i].bounds();
-                if (r1.intersects(r2)) {
+                if (r1.intersects(r2)) {  //si los cuadrados de bordes se intersecan, hay colision
                         collision = true;
                         if(r1.intersection(r2).getX()==r1.getX()&&player.dx<0){
                             player.setPositionX(player.getPositionX()+1);
@@ -134,9 +135,12 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
                         player.setPositionY(player.getPositionY()-1);
                         player.setDy(0);
                     }
+                    /*
+                    Datos de colisiones
                     System.out.println("wall: "+r1.getY());
                     System.out.println("player: "+player.getPositionY());
                     System.out.println("delta: "+(r1.intersection(r2).getY()-r1.getY()));
+                    */
 
                     break;
                 } else {
@@ -145,7 +149,7 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
             }
         }
     }
-    private void step(){
+    private void step(){ //permite que los jugadores puedan moverse en el mapa
         repaint();
         player1.move();
         player2.move();
@@ -157,9 +161,9 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
+    //metodos utilizado para asignar teclas de movimiento a cada jugador:
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) { //al presionar la tecla
         int key = e.getKeyCode();
 
         if(key == KeyEvent.VK_W){
@@ -237,7 +241,8 @@ public class TileMap extends JPanel implements ActionListener, KeyListener {
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+
+    public void keyReleased(KeyEvent e) { //al soltar la tecla
         int key = e.getKeyCode();
         //Player 1
         if(key == KeyEvent.VK_W){
